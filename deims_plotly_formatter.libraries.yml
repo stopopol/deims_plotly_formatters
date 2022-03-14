@@ -1,0 +1,22 @@
+plotly:
+  version: 2.9.0
+  js:
+    js/plotly-2.9.0.min.js: {}
+    
+deims-climate-formatter:
+  version: 1.0
+  js:
+    js/deims_climate_formatter.js: {}
+  dependencies:
+    - deims_plotly_formatter/plotly
+    - core/jquery
+    - core/drupalSettings
+    
+deims-params-formatter:
+  version: 1.0
+  js:
+    js/deims_params_formatter.js: {}
+  dependencies:
+    - deims_plotly_formatter/plotly
+    - core/jquery
+    - core/drupalSettings

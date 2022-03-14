@@ -1,0 +1,60 @@
+.green-colour {
+	color:green;
+}
+
+.red-colour {
+	color:red;
+}
+
+.verification-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.verification-tooltip .verification-tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+  margin-bottom: 5px;
+}
+
+.verfication-colour-green {
+  background-color: #6d9538;
+}
+
+.verfication-colour-red {
+  background-color: #ff3333;
+}
+
+.verfication-border-colour-green::after {
+  border-color: #6d9538 transparent transparent transparent;
+}
+
+.verfication-border-colour-red::after {
+  border-color: #ff3333 transparent transparent transparent;
+}
+
+.verification-tooltip .verification-tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  
+}
+
+.verification-tooltip:hover .verification-tooltiptext {
+  visibility: visible;
+}
