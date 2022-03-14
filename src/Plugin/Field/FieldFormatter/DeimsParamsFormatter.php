@@ -71,20 +71,7 @@ class DeimsParamsFormatter extends FormatterBase {
 			$category = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadParents($compartment_term_id);
 			$category_item = reset($category);
 			$category_term_id = $category_item->id();
-			
-			// add linebreaks to selected compartments
-			switch ($compartment_term_label) {
-				case 'Radiation Budget':
-					$compartment_term_label = 'Radiation<br>Budget';
-					break;
-				case 'Governance and stakeholders':
-					$compartment_term_label = 'Governance and<br>stakeholders';
-					break;
-				case 'Land use and land cover change':
-					$compartment_term_label = 'Land use and<br>land cover change';
-					break;
-			}
-			
+
 			array_push($parents,$category_term_id);
 			array_push($ids,$compartment_term_id);
 			array_push($labels,$compartment_term_label);
@@ -92,24 +79,6 @@ class DeimsParamsFormatter extends FormatterBase {
 			// if the category is not in the list, add it			
 			if (!in_array($category_term_id, $ids)) {
 				$category_term_label = \Drupal\taxonomy\Entity\Term::load($category_term_id)->get('name')->value;
-				
-				switch ($category_term_label) {
-					case 'Biotic heterogeneity':
-						$category_term_label = 'Biotic<br>heterogeneity';
-						break;
-					case 'Energy budget':
-						$category_term_label = 'Energy<br>budget';
-						break;
-					case 'Matter budget':
-						$category_term_label = 'Matter<br>budget';
-						break;
-					case 'Socio-Ecology':
-						$category_term_label = 'Socio<br>Ecology';
-						break;
-					case 'Water Balance':
-						$category_term_label = 'Water<br>Balance';
-						break;
-				}
 				
 				array_push($parents,'');
 				array_push($ids,$category_term_id);
