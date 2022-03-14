@@ -1,7 +1,7 @@
 plotly:
   version: 2.9.0
   js:
-    js/plotly-2.9.0.min.js: {}
+    js/plotly-2.9.0.min.js: {minified: true}
     
 deims-climate-formatter:
   version: 1.0
