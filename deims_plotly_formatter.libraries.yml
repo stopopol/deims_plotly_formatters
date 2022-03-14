@@ -20,3 +20,12 @@ deims-params-formatter:
     - deims_plotly_formatter/plotly
     - core/jquery
     - core/drupalSettings
+        
+deims-properties-formatter:
+  version: 1.0
+  js:
+    js/deims_properties_formatter.js: {}
+  dependencies:
+    - deims_plotly_formatter/plotly
+    - core/jquery
+    - core/drupalSettings

@@ -20,7 +20,7 @@ Drupal.behaviors.deims_params_formatter = {
 		displaylogo: false,
 		toImageButtonOptions: {
 			format: 'png', // one of png, svg, jpeg, webp
-			filename: 'parameters',
+			filename: 'elter_standard_observations',
 			height: 1200,
 			width: 1200,
 			scale: 1 // Multiply title/legend/axis/canvas sizes by this factor
