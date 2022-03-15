@@ -27,7 +27,7 @@ Drupal.behaviors.deims_params_formatter = {
 		},
 		modeBarButtonsToRemove: ['toggleHover','toImage']
 
-	}
+	};
 
 	var layout = {
 		autosize: true,
