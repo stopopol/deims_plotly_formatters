@@ -66,6 +66,9 @@ class DeimsPropertiesFormatter extends FormatterBase {
 		$item_value = $item->getValue();
 		$term_id = $item_value['target_id'];
 		$term_label = \Drupal\taxonomy\Entity\Term::load($term_id)->get('name')->value;
+	    
+	    	// replace all whitespaces in label with linebreaks
+	    	$term_label = preg_replace('/\s+/', '<br>', $term_label);
 		
 		// get parent
 		$parent = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadParents($term_id);
