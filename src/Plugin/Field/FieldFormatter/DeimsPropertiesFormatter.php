@@ -171,6 +171,10 @@ class DeimsPropertiesFormatter extends FormatterBase {
 		}
 			
 	}
+	  
+	if(empty($ids)) {
+		return $elements;
+	}
 	    
 	$elements[$delta] = [
 		'#markup' => '<div id="properties_div"></div>',
