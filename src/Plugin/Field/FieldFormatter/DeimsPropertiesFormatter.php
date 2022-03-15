@@ -44,13 +44,13 @@ class DeimsPropertiesFormatter extends FormatterBase {
 		
 	$agricultural_colour 	= '#CD7F32'; // brown
 	$atmospheric_colour 	= '#00BFFF'; // light blue
-	$biological_colour 		= '#4daf4a'; // green
+	$biological_colour 		= '#e8ccd7'; // queen pink
 	$chemical_colour 		= '#DC143C'; // red
 	$ecosystem_colour 		= '#228B22'; // forest green
 	$environmental_colour 	= '#7CFC00'; // grass green
 	$genetic_colour 		= '#f533ff'; // pink
 	$landscape_colour 		= '#AFE1AF'; // light green
-	$physical_colour 		= '#e8ccd7'; // queen pink
+	$physical_colour 		= '#ff8800 '; // orange
 	$remotesensing_colour 	= '#808080'; // grey
 	$soil_colour 			= '#6F4E37'; // dark brown
 	$water_colour 			= '#191970'; // dark blue
