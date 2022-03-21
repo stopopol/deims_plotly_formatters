@@ -21,7 +21,10 @@ Drupal.behaviors.deims_properties_formatter = {
 		},
 	};
 	
-	var config = {responsive: true}; 
+	var config = {
+		responsive: true,
+		displaylogo: false,
+	}; 
 	  
 	Plotly.newPlot('properties_div', data, layout, config);
 	
