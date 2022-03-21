@@ -12,13 +12,8 @@ Drupal.behaviors.deims_properties_formatter = {
 	}];
 	
 	var layout = {
-		margin: {
-			l: 10,
-			r: 10,
-			b: 10,
-			t: 10,
-			pad: 2
-		},
+		autosize: true,
+		margin: {l: 0, r: 0, b: 0, t:0},
 	};
 	
 	var config = {
