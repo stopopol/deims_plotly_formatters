@@ -42,7 +42,7 @@ class DeimsPropertiesFormatter extends FormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = [];
 		
-	$agricultural_colour 	= '#CD7F32'; // brown
+	$agricultural_colour 	= '#d18942'; // brown
 	$atmospheric_colour 	= '#00BFFF'; // light blue
 	$biological_colour 		= '#e8ccd7'; // queen pink
 	$chemical_colour 		= '#DC143C'; // red
