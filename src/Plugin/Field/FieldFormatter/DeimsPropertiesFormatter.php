@@ -43,7 +43,7 @@ class DeimsPropertiesFormatter extends FormatterBase {
     $elements = [];
 		
 	$agricultural_colour 	= '#d18942'; // brown
-	$atmospheric_colour 	= '#00BFFF'; // light blue
+	$atmospheric_colour 	= '#89e1ff'; // light blue
 	$biological_colour 		= '#e8ccd7'; // queen pink
 	$chemical_colour 		= '#DC143C'; // red
 	$ecosystem_colour 		= '#228B22'; // forest green
