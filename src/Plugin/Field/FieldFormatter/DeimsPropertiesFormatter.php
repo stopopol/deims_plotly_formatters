@@ -42,18 +42,18 @@ class DeimsPropertiesFormatter extends FormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = [];
 		
-	$agricultural_colour 	= '#d18942'; // brown
-	$atmospheric_colour 	= '#89e1ff'; // light blue
-	$biological_colour 		= '#e8ccd7'; // queen pink
-	$chemical_colour 		= '#DC143C'; // red
-	$ecosystem_colour 		= '#228B22'; // forest green
-	$environmental_colour 	= '#7CFC00'; // grass green
-	$genetic_colour 		= '#f533ff'; // pink
-	$landscape_colour 		= '#AFE1AF'; // light green
-	$physical_colour 		= '#ff8800 '; // orange
-	$remotesensing_colour 	= '#808080'; // grey
-	$soil_colour 			= '#6F4E37'; // dark brown
-	$water_colour 			= '#191970'; // dark blue
+	$agricultural_colour 		= '#fdb462';
+	$atmospheric_colour 		= '#8dd3c7';
+	$biological_colour 		= '#fccde5';
+	$chemical_colour 		= '#fb8072';
+	$ecosystem_colour 		= '#ffed6f';
+	$environmental_colour 		= '#b3de69';
+	$genetic_colour 		= '#bebada';
+	$landscape_colour 		= '#ccebc5';
+	$physical_colour 		= '#bc80bd';
+	$remotesensing_colour 		= '#d9d9d9';
+	$soil_colour 			= '#ffffb3';
+	$water_colour 			= '#80b1d3';	
 	
 	$labels = array();
 	$ids = array();
