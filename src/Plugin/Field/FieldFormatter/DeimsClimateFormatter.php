@@ -64,7 +64,7 @@ class DeimsClimateFormatter extends FormatterBase {
 						foreach ($air_temperature_values_object as $air_temperature_value) {
 							$air_temperature_values[]= floatval($air_temperature_value->value);
 						}
-						if (sizeof($air_temperature_values_object) != 12) {
+						if (sizeof($air_temperature_values) != 12) {
 							$air_temperature_values_object = array();
 						}
 					}
