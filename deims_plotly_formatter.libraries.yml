@@ -9,8 +9,15 @@ deims-climate-formatter:
     js/deims_climate_formatter.js: {}
   dependencies:
     - deims_plotly_formatter/plotly
+    - deims_plotly_formatter/deims-climate-formatter-style
     - core/jquery
     - core/drupalSettings
+
+deims-climate-formatter-style:
+  version: 1.x
+  css:
+    layout:
+      css/deims_climate_formatter.css: {}
     
 deims-params-formatter:
   version: 1.0

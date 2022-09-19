@@ -6,9 +6,6 @@ Drupal.behaviors.deims_climate_formatter = {
 		var div_name = 'climate_chart_' + input_data['deimsid'];
 		var raw_precipitation_values = input_data['air_precipitation_values'];
 		var raw_temperature_values = input_data['air_temperature_values'];
-		
-		var yearly_avg_temperature = input_data['annual_avg_air_temperature'];
-		var reference_period = input_data['reference_period'];
 
 		// precipitation and temperature values when using the same axis
 		var harmonised_precipitation_values = [];
@@ -225,41 +222,10 @@ Drupal.behaviors.deims_climate_formatter = {
 		};
 
 		var data = [temperature, precipitation];
-
-		var value_text = "";
-		if (raw_precipitation_values.length == 12) {
-			var precipitation_sum = Number(0);
-			raw_precipitation_values.forEach(function (x, i) {
-				precipitation_sum = precipitation_sum + Number(x);
-			});
-			value_text += "Precipitation Sum:     " + precipitation_sum.toString() + " mm<br>";
-		}
-
-		if (raw_temperature_values.length == 12) {
-			var calculated_temperature_mean = Number(0);
-			raw_temperature_values.forEach(function (x, i) {
-				calculated_temperature_mean = calculated_temperature_mean + Number(x);
-			});
-			calculated_temperature_mean = Math.round(calculated_temperature_mean/12 * 100) / 100;
-			value_text += "Temperature Mean:  " + calculated_temperature_mean.toString() + " &deg;C<br>"; 
-		}
-		else {
-			if (yearly_avg_temperature) {
-				value_text += "Temperature Mean:  " + yearly_avg_temperature.toString() + " &deg;C<br>"; 
-			}
-		}
 		
-		if (reference_period) {
-			value_text += "Standard Reference Period: " + reference_period; 
-		}
-		else {
-			value_text += "No reference period has been provided";
-		}
-
 		var layout = {
 			margin: {
 				t: 20,
-				b: 120
 			},
 			height: 400,
 			xaxis1: {
@@ -306,18 +272,6 @@ Drupal.behaviors.deims_climate_formatter = {
 				fixedrange: true,
 				showline: true,
 			},
-			annotations: [
-				{
-					x: 0.95,
-					y: -0.40,
-					showarrow: false,
-					text: value_text,
-					textangle: 0,
-					xref: "paper",
-					yref: "paper",
-					align: "left",
-				}
-			],
 			showlegend: true,
 			legend: {
 				orientation: "h",
