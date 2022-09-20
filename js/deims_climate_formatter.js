@@ -227,7 +227,7 @@ Drupal.behaviors.deims_climate_formatter = {
 			margin: {
 				t: 20,
 			},
-			height: 400,
+			height: 350,
 			xaxis1: {
 				tickmode: "array",
 				ticktext: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
@@ -285,7 +285,7 @@ Drupal.behaviors.deims_climate_formatter = {
 			toImageButtonOptions: {
 				format: 'png', // one of png, svg, jpeg, webp
 				filename: 'temp_prec_chart',
-				height: 400,
+				height: 350,
 				width: 700,
 				scale: 1 // Multiply title/legend/axis/canvas sizes by this factor
 			},
