@@ -1,7 +1,6 @@
 {
     "name": "stopopol/deims_plotly_formatters",
     "description": "renders information on DEIMS-SDR as plotly charts",
-    "type": "drupal-custom-module",
+    "type": "drupal-module",
     "homepage": "https://github.com/stopopol/deims_plotly_formatters"
 }
-
