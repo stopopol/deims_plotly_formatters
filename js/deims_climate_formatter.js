@@ -284,7 +284,7 @@ Drupal.behaviors.deims_climate_formatter = {
 			displaylogo: false,
 			toImageButtonOptions: {
 				format: 'png', // one of png, svg, jpeg, webp
-				filename: input_data['deimsid'] + '_climate_chart',
+				filename: input_data['site_title'] + '_climate_chart',
 				height: 350,
 				width: 700,
 				scale: 1 // Multiply title/legend/axis/canvas sizes by this factor
