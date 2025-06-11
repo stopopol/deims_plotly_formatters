@@ -48,7 +48,8 @@ class DeimsClimateFormatter extends FormatterBase {
 
 			if (!empty($nodes)) {
 				foreach ($nodes as $node) {
-					
+
+					$site_title = $node->getTitle();
 					$air_temperature_values_object = $node->get('field_air_temp');
 					$precipitation_values_object = $node->get('field_precipitation');
 						
@@ -101,6 +102,7 @@ class DeimsClimateFormatter extends FormatterBase {
 								'deims_climate_formatter' => array(
 									'data_object' => array(
 										'deimsid' => $record_uuid,
+										'site_title' => $site_title, 
 										'air_temperature_values' => $air_temperature_values,
 										'air_precipitation_values' => $precipitation_values,
 									),
