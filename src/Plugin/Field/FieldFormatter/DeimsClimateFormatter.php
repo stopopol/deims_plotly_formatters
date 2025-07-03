@@ -52,38 +52,51 @@ class DeimsClimateFormatter extends FormatterBase {
 					$site_title = $node->getTitle();
 					$air_temperature_values_object = $node->get('field_air_temp');
 					$precipitation_values_object = $node->get('field_precipitation');
+					$location_reference = $node->get('field_observation_location');
+					$locations_text = '';
+					
+					if (!$location_reference->isEmpty()) {
+						$locations_text = 'Exact location(s) of measurements:<br>';
+						foreach ($location_reference as $item) {
+							$location = $item->entity;
+						
+							if ($location) {
+								$location_id = $location->get('field_uuid')->value;
+								$location_title = $location->label();
+
+								// Do something with them
+								$locations_text .= "- <a href='/$location_id'>$location_title</a><br>";			  
+							}
+						}
+					}
 						
 					if ($node->get('field_standard_reference_period')->entity) {
-						$reference_period = 'Standard Reference Period: ' . $node->get('field_standard_reference_period')->entity->label();
+						$reference_period = 'Standard Reference Period: ' . $node->get('field_standard_reference_period')->entity->label().'<br>';
 					}
 					else {
-						$reference_period = "No reference period has been provided";
+						$reference_period = "No reference period has been provided<br>";
 					}
 					
 					$air_temperature_values = array();
 					$air_temperature_mean = null;
-					if ($air_temperature_values_object) {
+
+					if (!$air_temperature_values_object->isEmpty()) {
 						foreach ($air_temperature_values_object as $air_temperature_value) {
 							$air_temperature_values[]= floatval($air_temperature_value->value);
 						}
-						if (sizeof($air_temperature_values) != 12) {
-							$air_temperature_values_object = array();
-						}
-						else {
+						if (sizeof($air_temperature_values) == 12) {
 							$air_temperature_mean = 'Temperature Mean: ' . round(array_sum($air_temperature_values)/12, 2) . ' °C<br>';
 						}
 					}
 					
 					$precipitation_values = array();
 					$precipitation_sum = null;
-					if ($precipitation_values_object) {
+					
+					if (!$precipitation_values_object->isEmpty()) {
 						foreach ($precipitation_values_object as $precipitation_value) {
 							$precipitation_values[] = floatval($precipitation_value->value);
 						}
-						if (sizeof($precipitation_values) != 12) {
-							$precipitation_values = array();
-						}
-						else {
+						if (sizeof($precipitation_values) == 12) {
 							$precipitation_sum = 'Precipitation Sum:&nbsp;&nbsp;&nbsp;&nbsp;' . array_sum($precipitation_values) . ' mm<br>';
 						}
 					}
@@ -91,8 +104,12 @@ class DeimsClimateFormatter extends FormatterBase {
 					if (empty($air_temperature_values) && empty($precipitation_values)) {
 						return $elements;
 					}
-					
-					$legend_text = $precipitation_sum . $air_temperature_mean . $reference_period;
+										
+					$legend_text = '';
+					$legend_text .= $precipitation_sum ?? '';
+					$legend_text .= $air_temperature_mean ?? '';
+					$legend_text .= $reference_period ?? '';
+					$legend_text .= $locations_text ?? '';
 					
 					$elements[$delta] = [
 						'#markup' => '<div id="climate_chart_' . $record_uuid . '"></div><div class="legend-text">' . $legend_text . '</div>',
