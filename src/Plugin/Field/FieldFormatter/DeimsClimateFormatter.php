@@ -120,7 +120,7 @@ class DeimsClimateFormatter extends FormatterBase {
 					$legend_text .= $reference_period ?? '';
 					$legend_text .= $locations_text ?? '';
 					
-					$formatter_settings[$delta] = [
+					$formatter_settings = [
 						'deimsid' => $record_uuid,
 						'site_title' => $site_title,
 						'air_temperature_values' => $air_temperature_values,
@@ -136,10 +136,9 @@ class DeimsClimateFormatter extends FormatterBase {
 		
 		$elements['#attached'] = [
 			'library' => ['deims_plotly_formatter/deims-climate-formatter'],
-			'drupalSettings' => [
-				'deims_climate_formatter' => $formatter_settings,
-			],
 		];
+		$elements['#attached']['drupalSettings']['deims_climate_formatter'][$record_uuid] = $formatter_settings;
+
 
 		return $elements;
 
