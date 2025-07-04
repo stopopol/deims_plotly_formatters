@@ -1,9 +1,16 @@
 Drupal.behaviors.deims_climate_formatter = {
-	attach: function (context, settings) {
+  attach: function (context, settings) {
 
-		var input_data = drupalSettings.deims_climate_formatter.data_object;
-		
-		var div_name = 'climate_chart_' + input_data['deimsid'];
+    const formatter_data = drupalSettings.deims_climate_formatter;
+
+    Object.keys(formatter_data).forEach(function(key) {
+      const input_data = formatter_data[key];
+
+      const div_name = 'climate_chart_' + input_data['deimsid'];
+
+      // Prevent duplicate rendering due to Drupal behaviors
+      if (context.querySelector('#' + div_name) && !context.querySelector('#' + div_name).classList.contains('climate-rendered')) {
+        context.querySelector('#' + div_name).classList.add('climate-rendered');
 		var raw_precipitation_values = input_data['air_precipitation_values'];
 		var raw_temperature_values = input_data['air_temperature_values'];
 
@@ -53,7 +60,7 @@ Drupal.behaviors.deims_climate_formatter = {
 				return false
 			}
 
-			denominator = ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1))
+			let denominator = ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1))
 
 		  // Lines are parallel
 			if (denominator === 0) {
@@ -293,6 +300,8 @@ Drupal.behaviors.deims_climate_formatter = {
 		}
 
 		Plotly.newPlot(div_name, data, layout, config);
-	
-	}
+
+      }
+    });
+  }
 };
