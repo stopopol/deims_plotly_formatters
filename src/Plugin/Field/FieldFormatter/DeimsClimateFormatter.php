@@ -39,6 +39,7 @@ class DeimsClimateFormatter extends FormatterBase {
 	  */
 	public function viewElements(FieldItemListInterface $items, $langcode) {
 		$elements = [];
+		$formatter_settings = [];
 		// Render each element as markup in case of multi-values.
 
 		foreach ($items as $delta => $item) {
@@ -56,18 +57,26 @@ class DeimsClimateFormatter extends FormatterBase {
 					$locations_text = '';
 					
 					if (!$location_reference->isEmpty()) {
-						$locations_text = 'Exact location(s) of measurements:<br>';
+						
+						$counter = 1;
+						$locations_references = '';
+						
 						foreach ($location_reference as $item) {
 							$location = $item->entity;
-						
+							
 							if ($location) {
-								$location_id = $location->get('field_uuid')->value;
-								$location_title = $location->label();
-
-								// Do something with them
-								$locations_text .= "- <a href='/$location_id'>$location_title</a><br>";			  
+								$location_id = $location->get('field_uuid')->value;								
+								$locations_references .= "<a href='/$location_id'>[$counter]</a>&nbsp;";
+								$counter++;								
 							}
 						}
+						
+						$locations_text = "Exact location";
+						if ($counter > 1) {
+							$locations_text .= "s";
+						}
+						$locations_text .= " of measurements: " . $locations_references;
+							
 					}
 						
 					if ($node->get('field_standard_reference_period')->entity) {
@@ -111,26 +120,26 @@ class DeimsClimateFormatter extends FormatterBase {
 					$legend_text .= $reference_period ?? '';
 					$legend_text .= $locations_text ?? '';
 					
+					$formatter_settings[$delta] = [
+						'deimsid' => $record_uuid,
+						'site_title' => $site_title,
+						'air_temperature_values' => $air_temperature_values,
+						'air_precipitation_values' => $precipitation_values,
+					];
+					
 					$elements[$delta] = [
 						'#markup' => '<div id="climate_chart_' . $record_uuid . '"></div><div class="legend-text">' . $legend_text . '</div>',
-						'#attached' => array(
-							'library'=> array('deims_plotly_formatter/deims-climate-formatter'),
-							'drupalSettings' => array(
-								'deims_climate_formatter' => array(
-									'data_object' => array(
-										'deimsid' => $record_uuid,
-										'site_title' => $site_title, 
-										'air_temperature_values' => $air_temperature_values,
-										'air_precipitation_values' => $precipitation_values,
-									),
-								)
-							),
-						),
-						
 					];
 				}
 			}
 		}
+		
+		$elements['#attached'] = [
+			'library' => ['deims_plotly_formatter/deims-climate-formatter'],
+			'drupalSettings' => [
+				'deims_climate_formatter' => $formatter_settings,
+			],
+		];
 
 		return $elements;
 
