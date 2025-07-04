@@ -3,9 +3,8 @@ Drupal.behaviors.deims_climate_formatter = {
 
     const formatter_data = drupalSettings.deims_climate_formatter;
 
-    Object.keys(formatter_data).forEach(function(key) {
-      const input_data = formatter_data[key];
-
+	Object.keys(formatter_data).forEach(function(key) {
+	  const input_data = formatter_data[key];
       const div_name = 'climate_chart_' + input_data['deimsid'];
 
       // Prevent duplicate rendering due to Drupal behaviors
