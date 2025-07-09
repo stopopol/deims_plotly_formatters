@@ -301,7 +301,6 @@ Drupal.behaviors.deims_climate_formatter = {
 
 			Plotly.newPlot(div_name, data, layout, config);
 
-
 		});
 	}
 };
