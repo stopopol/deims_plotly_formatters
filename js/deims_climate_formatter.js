@@ -7,7 +7,6 @@ Drupal.behaviors.deims_climate_formatter = {
 			const input_data = formatter_data[key];
 			const div_name = 'climate_chart_' + input_data['deimsid'];
 
-
 			var raw_precipitation_values = input_data['air_precipitation_values'];
 			var raw_temperature_values = input_data['air_temperature_values'];
 
