@@ -58,16 +58,16 @@ class DeimsClimateFormatter extends FormatterBase {
 					
 					if (!$location_reference->isEmpty()) {
 						
-						$counter = 1;
+						$counter = 0;
 						$locations_references = '';
 						
 						foreach ($location_reference as $item) {
 							$location = $item->entity;
 							
 							if ($location) {
-								$location_id = $location->get('field_uuid')->value;								
-								$locations_references .= "<a href='/locations/$location_id'>[$counter]</a>&nbsp;";
-								$counter++;								
+								$location_id = $location->get('field_uuid')->value;
+								$counter++;
+								$locations_references .= "<a href='/locations/$location_id'>[$counter]</a>&nbsp;";			
 							}
 						}
 						
@@ -144,3 +144,4 @@ class DeimsClimateFormatter extends FormatterBase {
     }
 
 }
+
